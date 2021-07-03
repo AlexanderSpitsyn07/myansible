@@ -1,0 +1,4 @@
+---
+  some_fact: "{{ vault_db_pass }}"
+
+# all default fact

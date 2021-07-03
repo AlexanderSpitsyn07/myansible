@@ -1,0 +1,17 @@
+---
+  el:
+    hosts:
+      centos7:
+        ansible_connection: docker
+  deb:
+    hosts:
+      ubuntu:
+        ansible_connection: docker
+  all:
+    hosts:
+      local:
+        ansible_connection: local
+  last:
+    hosts:
+      fedora:
+        ansible_connection: docker
