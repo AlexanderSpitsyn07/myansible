@@ -1,74 +1,30 @@
-# Самоконтроль выполненения задания
+## Необязательная часть
 
-1. Где расположен файл с `some_fact` из второго пункта задания?
-
-Ответ.
-group_vars/all/examp.yml
-
-
-2. Какая команда нужна для запуска вашего `playbook` на окружении `test.yml`?
+1. При помощи `ansible-vault` расшифруйте все зашифрованные файлы с переменными.
 
 Ответ.
-ansible-playbook site.yml -i inventory/test.yml
+![Screenshot](3-1.png) 
 
-
-3. Какой командой можно зашифровать файл?
-
-Ответ.
-ansible-vault encrypt file
-
-
-4. Какой командой можно расшифровать файл?
+2. Зашифруйте отдельное значение `PaSSw0rd` для переменной `some_fact` паролем `netology`. Добавьте полученное значение в `group_vars/all/exmp.yml`.
 
 Ответ.
-ansible-vault decrypt file
+![Screenshot](3-2-1.png) 
+![Screenshot](3-2-2.png) 
 
-
-5. Можно ли посмотреть содержимое зашифрованного файла без команды расшифровки файла? Если можно, то как?
-
-Ответ.
-Можно: 
-ansible-vault view file или ansible-vault edit file (можно и смотреть и редактировать)
-
-
-6. Как выглядит команда запуска `playbook`, если переменные зашифрованы?
+3. Запустите `playbook`, убедитесь, что для нужных хостов применился новый `fact`.
 
 Ответ.
-Примерно так: 
-ansible-playbook site.yml -i inventory/prod.yml --ask-vault-pass
+![Screenshot](3-3.png)
 
-
-7. Как называется модуль подключения к host на windows?
+4. Добавьте новую группу хостов `fedora`, самостоятельно придумайте для неё переменную. В качестве образа можно использовать [этот](https://hub.docker.com/r/pycontribs/fedora).
 
 Ответ.
-Windows Remote Management или WinRM. 
+![Screenshot](3-4-1.png)
+![Screenshot](3-4-2.png)
 
- 
-8. Приведите полный текст команды для поиска информации в документации ansible для модуля подключений ssh
-
-Ответ.
-ansible-doc -t connection ssh
-
-
-9. Какой параметр из модуля подключения `ssh` необходим для того, чтобы определить пользователя, под которым необходимо совершать подключение?
+5. Напишите скрипт на bash: автоматизируйте поднятие необходимых контейнеров, запуск ansible-playbook и остановку контейнеров.
 
 Ответ.
+![Screenshot](3-5.png)
 
-remote_user
-
-        User name with which to login to the remote server, normally set by the remote_user keyword.
-        If no user is supplied, Ansible will let the ssh client binary choose the user as it normally
-        [Default: (null)]
-        set_via:
-          env:
-          - name: ANSIBLE_REMOTE_USER
-          ini:
-          - key: remote_user
-            section: defaults
-          vars:
-          - name: ansible_user
-          - name: ansible_ssh_user
-        
-        cli:
-        - name: user
 
